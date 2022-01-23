@@ -19,6 +19,7 @@ namespace TranslatorTest1
         List<string> SiPlusCode_temp = new List<string>();
         bool NoKeys = true;
         bool SyntError = false;
+
         public Form1()
         {
             InitializeComponent();
@@ -27,7 +28,7 @@ namespace TranslatorTest1
 
         private void buttonTranslate_Click(object sender, EventArgs e)
         {
-            FromPascalToAlg();
+            FromPascalToAlg(); //Перевести код с Pascal на Алгоритмический язык
         }
 
         /// <summary>
@@ -389,7 +390,7 @@ namespace TranslatorTest1
                 NoKeys = false;
                 try
                 {
-                    code = code.Replace("if", "ЕСЛИ");
+                    code = code.Replace("ЕСЛИ", "if");
                     AlgCodeLines[line] = code;
                 }
                 catch
@@ -402,7 +403,7 @@ namespace TranslatorTest1
                 NoKeys = false;
                 try
                 {
-                    code = code.Replace("then", "ТО");
+                    code = code.Replace("ТО", "then");
                     AlgCodeLines[line] = code;
                 }
                 catch
@@ -415,7 +416,7 @@ namespace TranslatorTest1
                 NoKeys = false;
                 try
                 {
-                    code = code.Replace("else", "ИНАЧЕ");
+                    code = code.Replace("ИНАЧЕ", "else");
                     AlgCodeLines[line] = code;
                 }
                 catch
@@ -428,7 +429,7 @@ namespace TranslatorTest1
                 NoKeys = false;
                 try
                 {
-                    code = code.Replace("and", "И");
+                    code = code.Replace("И", "and");
                     AlgCodeLines[line] = code;
                 }
                 catch
@@ -441,7 +442,7 @@ namespace TranslatorTest1
                 NoKeys = false;
                 try
                 {
-                    code = code.Replace("or", "ИЛИ");
+                    code = code.Replace("ИЛИ", "or");
                     AlgCodeLines[line] = code;
                 }
                 catch
@@ -454,7 +455,7 @@ namespace TranslatorTest1
                 NoKeys = false;
                 try
                 {
-                    code = code.Replace("not", "НЕ");
+                    code = code.Replace("НЕ", "not");
                     AlgCodeLines[line] = code;
                 }
                 catch
@@ -467,7 +468,7 @@ namespace TranslatorTest1
                 NoKeys = false;
                 try
                 {
-                    code = code.Replace("true", "ДА");
+                    code = code.Replace("ДА", "true");
                     AlgCodeLines[line] = code;
                 }
                 catch
@@ -480,7 +481,7 @@ namespace TranslatorTest1
                 NoKeys = false;
                 try
                 {
-                    code = code.Replace("false", "НЕТ");
+                    code = code.Replace("ДА", "true");
                     AlgCodeLines[line] = code;
                 }
                 catch
@@ -494,11 +495,11 @@ namespace TranslatorTest1
                 NoKeys = false;
                 try
                 {
-                    code = code.Replace("for", "НЦ ДЛЯ");
-                    code = code.Replace("begin", "НАЧ");
-                    code = code.Replace(":=", " ОТ ");
-                    code = code.Replace("to", "ДО");
-                    code = code.Replace("do", "");
+                    code = code.Replace("НЦ ДЛЯ", "for");
+                    code = code.Replace("НАЧ", "begin");
+                    code = code.Replace(" ОТ ", ":=");
+                    code = code.Replace("ДО", "to");
+                    code = code.Replace("", "do");
                     AlgCodeLines[line] = code;
                 }
                 catch
@@ -511,11 +512,11 @@ namespace TranslatorTest1
                 NoKeys = false;
                 try
                 {
-                    code = code.Replace("while", "НЦ ПОКА");
-                    code = code.Replace("begin", "НАЧ");
+                    code = code.Replace("НЦ ПОКА", "while");
+                    code = code.Replace("НАЧ", "begin");
                     code = code.Replace("do", "");
-                    code = code.Replace("and", "И");
-                    code = code.Replace("or", "ИЛИ");                    
+                    code = code.Replace("И", "and");
+                    code = code.Replace("ИЛИ  ", "or");                  
                     AlgCodeLines[line] = code;
                 }
                 catch
@@ -529,10 +530,10 @@ namespace TranslatorTest1
                 NoKeys = false;
                 try
                 {
-                    code = code.Replace("of integer", "");
-                    code = code.Replace("array", "");
-                    code = code.Replace(":", " ");
-                    code = code.Replace("..", ":");
+                    code = code.Replace("", "of integer");
+                    code = code.Replace("", "array");
+                    code = code.Replace("", "array");
+                    code = code.Replace(":", "..");
                     code = "ЦЕЛТАБ " + code;
 
                     AlgCodeLines[line] = code;
@@ -548,10 +549,10 @@ namespace TranslatorTest1
                 NoKeys = false;
                 try
                 {
-                    code = code.Replace("of float", "");
-                    code = code.Replace("array", "");
-                    code = code.Replace(":", " ");
-                    code = code.Replace("..", ":");
+                    code = code.Replace("", "of float");
+                    code = code.Replace("", "array");
+                    code = code.Replace(" ", ":");
+                    code = code.Replace(" ", ":");
                     code = "ВЕЩТАБ " + code;
 
                     AlgCodeLines[line] = code;
@@ -583,7 +584,7 @@ namespace TranslatorTest1
                 NoKeys = false;
                 try
                 {
-                    code = code.Replace("var", "ПЕР");
+                    code = code.Replace("ПЕР", "var");
                     AlgCodeLines[line] = code;
                 }
                 catch
@@ -597,7 +598,7 @@ namespace TranslatorTest1
                 NoKeys = false;
                 try
                 {
-                    code = code.Replace("longint", "ДЛИНЦЕЛ");
+                    code = code.Replace("ДЛИНЦЕЛ", "longint");
                     AlgCodeLines[line] = code;
                 }
                 catch
@@ -611,7 +612,7 @@ namespace TranslatorTest1
                 NoKeys = false;
                 try
                 {
-                    code = code.Replace("integer", "ЦЕЛ");
+                    code = code.Replace("ЦЕЛ", "integer");
                     AlgCodeLines[line] = code;
                 }
                 catch
@@ -625,7 +626,7 @@ namespace TranslatorTest1
                 NoKeys = false;
                 try
                 {
-                    code = code.Replace("float", "ВЕЩ");
+                    code = code.Replace("ВЕЩ", "float");
                     AlgCodeLines[line] = code;
                 }
                 catch
@@ -639,7 +640,7 @@ namespace TranslatorTest1
                 NoKeys = false;
                 try
                 {
-                    code = code.Replace("string", "СТР");
+                    code = code.Replace("СТР", "string");
                     AlgCodeLines[line] = code;
                 }
                 catch
@@ -656,7 +657,7 @@ namespace TranslatorTest1
                 NoKeys = false;
                 try
                 {
-                    code = code.Replace("begin", "НАЧ");
+                    code = code.Replace("НАЧ", "begin");
                     AlgCodeLines[line] = code;
                 }
                 catch
@@ -670,7 +671,7 @@ namespace TranslatorTest1
                 NoKeys = false;
                 try
                 {
-                    code = code.Replace("end", "КОН");
+                    code = code.Replace("КОН", "end");
                     AlgCodeLines[line] = code;
                 }
                 catch
@@ -688,8 +689,8 @@ namespace TranslatorTest1
                 NoKeys = false;
                 try
                 {
-                    code = code.Replace("writeln", "ВЫВОД_НС");
-                    code = code.Replace("write", "ВЫВОД");                    
+                    code = code.Replace("ВЫВОД_НС", "writeln");
+                    code = code.Replace("ВЫВОД", "write");
                     AlgCodeLines[line] = code;
                 }
                 catch
@@ -703,8 +704,8 @@ namespace TranslatorTest1
                 NoKeys = false;
                 try
                 {
-                    code = code.Replace("readln", "ВВОД_НС");
-                    code = code.Replace("read", "ВВОД");
+                    code = code.Replace("ВВОД_НС", "readln");
+                    code = code.Replace("ВВОД", "read");
                     AlgCodeLines[line] = code;
                 }
                 catch

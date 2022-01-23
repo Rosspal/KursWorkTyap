@@ -58,3 +58,13 @@ C:\Users\gukov\Desktop\TranslatorTest1 — копия — копия — коп�
 C:\Users\gukov\Desktop\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\obj\Debug\TranslatorTest1.csproj.CoreCompileInputs.cache
 C:\Users\gukov\Desktop\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\obj\Debug\TranslatorTest1.exe
 C:\Users\gukov\Desktop\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\obj\Debug\TranslatorTest1.pdb
+C:\Users\gukov\Desktop\Repository\KursWorkTyap\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\bin\Debug\TranslatorTest1.exe.config
+C:\Users\gukov\Desktop\Repository\KursWorkTyap\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\bin\Debug\TranslatorTest1.exe
+C:\Users\gukov\Desktop\Repository\KursWorkTyap\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\bin\Debug\TranslatorTest1.pdb
+C:\Users\gukov\Desktop\Repository\KursWorkTyap\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\obj\Debug\TranslatorTest1.csproj.AssemblyReference.cache
+C:\Users\gukov\Desktop\Repository\KursWorkTyap\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\obj\Debug\TranslatorTest1.Form1.resources
+C:\Users\gukov\Desktop\Repository\KursWorkTyap\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\obj\Debug\TranslatorTest1.Properties.Resources.resources
+C:\Users\gukov\Desktop\Repository\KursWorkTyap\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\obj\Debug\TranslatorTest1.csproj.GenerateResource.cache
+C:\Users\gukov\Desktop\Repository\KursWorkTyap\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\obj\Debug\TranslatorTest1.csproj.CoreCompileInputs.cache
+C:\Users\gukov\Desktop\Repository\KursWorkTyap\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\obj\Debug\TranslatorTest1.exe
+C:\Users\gukov\Desktop\Repository\KursWorkTyap\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\obj\Debug\TranslatorTest1.pdb
