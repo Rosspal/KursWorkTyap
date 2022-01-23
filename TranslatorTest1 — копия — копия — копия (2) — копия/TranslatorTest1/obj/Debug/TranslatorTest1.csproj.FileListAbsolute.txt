@@ -1,0 +1,60 @@
+C:\Users\Admin\source\repos\TranslatorTest1\TranslatorTest1\bin\Debug\TranslatorTest1.exe.config
+C:\Users\Admin\source\repos\TranslatorTest1\TranslatorTest1\bin\Debug\TranslatorTest1.exe
+C:\Users\Admin\source\repos\TranslatorTest1\TranslatorTest1\bin\Debug\TranslatorTest1.pdb
+C:\Users\Admin\source\repos\TranslatorTest1\TranslatorTest1\obj\Debug\TranslatorTest1.csprojAssemblyReference.cache
+C:\Users\Admin\source\repos\TranslatorTest1\TranslatorTest1\obj\Debug\TranslatorTest1.Form1.resources
+C:\Users\Admin\source\repos\TranslatorTest1\TranslatorTest1\obj\Debug\TranslatorTest1.Properties.Resources.resources
+C:\Users\Admin\source\repos\TranslatorTest1\TranslatorTest1\obj\Debug\TranslatorTest1.csproj.GenerateResource.cache
+C:\Users\Admin\source\repos\TranslatorTest1\TranslatorTest1\obj\Debug\TranslatorTest1.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\TranslatorTest1\TranslatorTest1\obj\Debug\TranslatorTest1.exe
+C:\Users\Admin\source\repos\TranslatorTest1\TranslatorTest1\obj\Debug\TranslatorTest1.pdb
+C:\Users\Admin\source\repos\TranslatorTest1 — копия — копия\TranslatorTest1\bin\Debug\TranslatorTest1.exe.config
+C:\Users\Admin\source\repos\TranslatorTest1 — копия — копия\TranslatorTest1\bin\Debug\TranslatorTest1.exe
+C:\Users\Admin\source\repos\TranslatorTest1 — копия — копия\TranslatorTest1\bin\Debug\TranslatorTest1.pdb
+C:\Users\Admin\source\repos\TranslatorTest1 — копия — копия\TranslatorTest1\obj\Debug\TranslatorTest1.csprojAssemblyReference.cache
+C:\Users\Admin\source\repos\TranslatorTest1 — копия — копия\TranslatorTest1\obj\Debug\TranslatorTest1.Form1.resources
+C:\Users\Admin\source\repos\TranslatorTest1 — копия — копия\TranslatorTest1\obj\Debug\TranslatorTest1.Properties.Resources.resources
+C:\Users\Admin\source\repos\TranslatorTest1 — копия — копия\TranslatorTest1\obj\Debug\TranslatorTest1.csproj.GenerateResource.cache
+C:\Users\Admin\source\repos\TranslatorTest1 — копия — копия\TranslatorTest1\obj\Debug\TranslatorTest1.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\TranslatorTest1 — копия — копия\TranslatorTest1\obj\Debug\TranslatorTest1.exe
+C:\Users\Admin\source\repos\TranslatorTest1 — копия — копия\TranslatorTest1\obj\Debug\TranslatorTest1.pdb
+C:\Users\Admin\source\repos\TranslatorTest1 — копия — копия — копия (2)\TranslatorTest1\bin\Debug\TranslatorTest1.exe.config
+C:\Users\Admin\source\repos\TranslatorTest1 — копия — копия — копия (2)\TranslatorTest1\bin\Debug\TranslatorTest1.exe
+C:\Users\Admin\source\repos\TranslatorTest1 — копия — копия — копия (2)\TranslatorTest1\bin\Debug\TranslatorTest1.pdb
+C:\Users\Admin\source\repos\TranslatorTest1 — копия — копия — копия (2)\TranslatorTest1\obj\Debug\TranslatorTest1.csprojAssemblyReference.cache
+C:\Users\Admin\source\repos\TranslatorTest1 — копия — копия — копия (2)\TranslatorTest1\obj\Debug\TranslatorTest1.Form1.resources
+C:\Users\Admin\source\repos\TranslatorTest1 — копия — копия — копия (2)\TranslatorTest1\obj\Debug\TranslatorTest1.Properties.Resources.resources
+C:\Users\Admin\source\repos\TranslatorTest1 — копия — копия — копия (2)\TranslatorTest1\obj\Debug\TranslatorTest1.csproj.GenerateResource.cache
+C:\Users\Admin\source\repos\TranslatorTest1 — копия — копия — копия (2)\TranslatorTest1\obj\Debug\TranslatorTest1.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\TranslatorTest1 — копия — копия — копия (2)\TranslatorTest1\obj\Debug\TranslatorTest1.exe
+C:\Users\Admin\source\repos\TranslatorTest1 — копия — копия — копия (2)\TranslatorTest1\obj\Debug\TranslatorTest1.pdb
+C:\Users\Admin\source\repos\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\bin\Debug\TranslatorTest1.exe.config
+C:\Users\Admin\source\repos\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\bin\Debug\TranslatorTest1.exe
+C:\Users\Admin\source\repos\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\bin\Debug\TranslatorTest1.pdb
+C:\Users\Admin\source\repos\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\obj\Debug\TranslatorTest1.csprojAssemblyReference.cache
+C:\Users\Admin\source\repos\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\obj\Debug\TranslatorTest1.Form1.resources
+C:\Users\Admin\source\repos\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\obj\Debug\TranslatorTest1.Properties.Resources.resources
+C:\Users\Admin\source\repos\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\obj\Debug\TranslatorTest1.csproj.GenerateResource.cache
+C:\Users\Admin\source\repos\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\obj\Debug\TranslatorTest1.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\obj\Debug\TranslatorTest1.exe
+C:\Users\Admin\source\repos\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\obj\Debug\TranslatorTest1.pdb
+C:\Users\zabko\OneDrive\Рабочий стол\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\bin\Debug\TranslatorTest1.exe.config
+C:\Users\zabko\OneDrive\Рабочий стол\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\bin\Debug\TranslatorTest1.exe
+C:\Users\zabko\OneDrive\Рабочий стол\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\bin\Debug\TranslatorTest1.pdb
+C:\Users\zabko\OneDrive\Рабочий стол\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\obj\Debug\TranslatorTest1.csprojAssemblyReference.cache
+C:\Users\zabko\OneDrive\Рабочий стол\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\obj\Debug\TranslatorTest1.Form1.resources
+C:\Users\zabko\OneDrive\Рабочий стол\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\obj\Debug\TranslatorTest1.Properties.Resources.resources
+C:\Users\zabko\OneDrive\Рабочий стол\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\obj\Debug\TranslatorTest1.csproj.GenerateResource.cache
+C:\Users\zabko\OneDrive\Рабочий стол\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\obj\Debug\TranslatorTest1.csproj.CoreCompileInputs.cache
+C:\Users\zabko\OneDrive\Рабочий стол\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\obj\Debug\TranslatorTest1.exe
+C:\Users\zabko\OneDrive\Рабочий стол\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\obj\Debug\TranslatorTest1.pdb
+C:\Users\gukov\Desktop\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\bin\Debug\TranslatorTest1.exe.config
+C:\Users\gukov\Desktop\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\bin\Debug\TranslatorTest1.exe
+C:\Users\gukov\Desktop\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\bin\Debug\TranslatorTest1.pdb
+C:\Users\gukov\Desktop\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\obj\Debug\TranslatorTest1.csproj.AssemblyReference.cache
+C:\Users\gukov\Desktop\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\obj\Debug\TranslatorTest1.Form1.resources
+C:\Users\gukov\Desktop\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\obj\Debug\TranslatorTest1.Properties.Resources.resources
+C:\Users\gukov\Desktop\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\obj\Debug\TranslatorTest1.csproj.GenerateResource.cache
+C:\Users\gukov\Desktop\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\obj\Debug\TranslatorTest1.csproj.CoreCompileInputs.cache
+C:\Users\gukov\Desktop\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\obj\Debug\TranslatorTest1.exe
+C:\Users\gukov\Desktop\TranslatorTest1 — копия — копия — копия (2) — копия\TranslatorTest1\obj\Debug\TranslatorTest1.pdb

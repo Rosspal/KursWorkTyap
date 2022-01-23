@@ -1,0 +1,19 @@
+program PrinArrayElementsFromInterval
+var 
+a:array[1..10] of integer;
+c,d:integer;
+i:integer;
+begin
+writeln('введите 10 элементов массива');
+for i:=1 to 10 do 
+begin 
+readln( a[i] ); 
+end;
+writeln('введите интервал C и D');
+readln( c,d );
+for i:=1 to 10 do 
+begin
+if (a[i]>=C) and (a[i]<=D) then 
+writeln(a[i]);
+end;
+end.
