@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TranslatorTest1
@@ -14,16 +9,15 @@ namespace TranslatorTest1
     public partial class Form1 : Form
     {
         List<string> AlgCodeLines = new List<string>();
-        List<string> SiPlusCodeLines = new List<string>();
 
-        List<string> SiPlusCode_temp = new List<string>();
         bool NoKeys = true;
         bool SyntError = false;
+        int count = 0;
 
         public Form1()
         {
             InitializeComponent();
-            textBox_Alg.ReadOnly = true;
+            textBox_Pascal.ReadOnly = true;
         }
 
         private void buttonTranslate_Click(object sender, EventArgs e)
@@ -35,27 +29,27 @@ namespace TranslatorTest1
         /// Перевести код с Pascal на алгоритмический язык
         /// </summary>
         public void FromPascalToAlg()
-        {           
-            string copyCode = textBox_Pascal.Text;
-            textBox_Pascal.Text = "";
-            textBox_Pascal.Text = copyCode;
+        {
+            count = 0;
+            string copyCode = textBox_Alg.Text;
+            textBox_Alg.Text = "";
+            textBox_Alg.Text = copyCode;
 
             AlgCodeLines.Clear();
-            SiPlusCodeLines.Clear();
 
-            textBox_Alg.Text = "";
-            
+            textBox_Pascal.Text = "";
+
 
             int line = 0;
             string tempStr = "";
-            foreach (string str in textBox_Pascal.Lines)
+            foreach (string str in textBox_Alg.Lines)
             {
                 tempStr = str;
-                ChangeKeys_PascalToAlg(tempStr, line);
+                ChangeKeys_AlgToPascal(tempStr, line);
 
                 if (NoKeys == true) //не найдено ни одно совпадение из списка ключей
                 {
-                    MarkMistake(textBox_Pascal, tempStr);
+                    MarkMistake(textBox_Alg, tempStr);
                     MessageBox.Show("Похоже, что в строке №" + line.ToString() + " ' " + tempStr.ToString() + " ' ошибка " + "\n" + "Проверьте, пожалуйста, код"
                         , "Ошибка при лексическом анализе");
 
@@ -69,27 +63,17 @@ namespace TranslatorTest1
             }
             if (NoKeys == false)
             {
-                CheckSyntMistakes(); //Проверка на синтаксические ошибки
 
                 if (SyntError == false) //если ошибок нет
                 {
                     WriteAlgCodeToTextBox();
-                    ChangeSynt_PascalToAlg(); //привести синтаксис к алгоритмическому языку
-                    WriteAlgCodeToTextBox();
                 }
                 else
-                {                    
+                {
                     MessageBox.Show("Проверка синтаксического анализа не пройдена"
                         , "Ошибка при синтаксическом анализе");
                 }
-            }          
-
-                                 
-            //for(int i = 0; i < textBox_Pascal.Lines.Count(); i++)
-            //{
-            //    for(int j = 0; )
-            //}
-            //Console.Write(arg[i].tostring)
+            }
         }
 
 
@@ -111,38 +95,35 @@ namespace TranslatorTest1
         /// Проверка на синтаксические ошибки
         /// </summary>
         public void CheckSyntMistakes()
-        {            
-            foreach (string line in textBox_Pascal.Lines)
+        {
+            foreach (string line in textBox_Alg.Lines)
             {
                 SyntError = false;
-                if (line.Contains(":=")) //проверка на правильность присваивания
+                if ((line.Contains(":=")) || (line.Contains("+=")) || (line.Contains("-="))) //проверка на правильность присваивания
                 {
                     char[] words = line.ToCharArray();
                     int CharIndex = line.IndexOf(":=");
                     {
-                        if (words[CharIndex + 2] == ';')
-                        {
-                            MarkMistake(textBox_Pascal, line);
-                            MessageBox.Show("Похоже, что в строке " + line + " ' ошибка присваивания" + "\n" + "Проверьте, пожалуйста, код"
-                            , "Ошибка при синтаксическом анализе");
-                            SyntError = true;
-                            break;
-                        }
+
                         try
                         {
-                            if (words[CharIndex - 1] == ' ')
+                            if (words[CharIndex + 2] == ';')
                             {
-
+                                MarkMistake(textBox_Alg, line);
+                                MessageBox.Show("Похоже, что в строке " + line + " ' ошибка присваивания" + "\n" + "Проверьте, пожалуйста, код"
+                                , "Ошибка при синтаксическом анализе");
+                                SyntError = true;
+                                break;
                             }
                         }
                         catch
                         {
-                            MarkMistake(textBox_Pascal, line);
+                            MarkMistake(textBox_Alg, line);
                             MessageBox.Show("Похоже, что в строке " + line + " ' ошибка присваивания" + "\n" + "Проверьте, пожалуйста, код"
                             , "Ошибка при синтаксическом анализе");
                             SyntError = true;
                             break;
-                        }                                    
+                        }
                     }
                 }
             }
@@ -153,228 +134,40 @@ namespace TranslatorTest1
         /// </summary>
         public void WriteAlgCodeToTextBox()
         {
-            textBox_Alg.Text = "";
+            textBox_Pascal.Text = "";
             for (int i = 0; i < AlgCodeLines.Count; i++)
             {
-                textBox_Alg.Text += AlgCodeLines[i] + "\r\n";
-            }
-        }
-
-
-        /// <summary>
-        /// синтаксический анализ кода [Pascal -> Алг]
-        /// </summary>
-        public void ChangeSynt_PascalToAlg()
-        {
-            int line = 0;            
-
-            foreach (string str in textBox_Alg.Lines)
-            {
-                ChangeCycle_PascalToAlg(str, line);
-                line++;
-            }
-            line = 0;
-            foreach (string str in textBox_Alg.Lines)
-            {
-                ChangeReadWrite_PascalToAlg(str, line);
-                ChangeVarType_PascalToAlg(str, line);
-                line++;
+                textBox_Pascal.Text += AlgCodeLines[i] + "\r\n";
             }
         }
 
         /// <summary>
-        /// поменять синтаксис объявления массивов
-        /// </summary>
-        public void ChangeArray_PascalToAlg() 
-        {
-            int line = 0;
-            string code = "";
-            foreach (string str in textBox_Pascal.Lines)
-            {
-                if(str.Contains("] of integer"))
-                {
-                    try
-                    {
-                        code = str.Replace("of integer", "");
-                        code = code.Replace("array", "");
-                        code = code.Replace(":", " ");
-                        code = code.Replace("..", ":");
-                        code = "ЦЕЛТАБ " + code;
-
-                        AlgCodeLines[line] = code;
-                    }
-                    catch
-                    {
-                        AlgCodeLines.Add(code);
-                    }
-                }
-                else
-                if (str.Contains("] of float"))
-                {
-                    try
-                    {
-                        code = code.Replace("of float", "");
-                        code = code.Replace("array", "");
-                        code = code.Replace(":", " ");
-                        code = code.Replace("..", ":");
-                        code = "ВЕЩТАБ " + code;
-
-                        AlgCodeLines[line] = code;
-                    }
-                    catch
-                    {
-                        AlgCodeLines.Add(code);
-                    }
-                }
-                line++;
-            }
-        }
-
-
-        /// <summary>
-        /// поменять синтаксис ввода/вывода данных
+        /// пробельчики
         /// </summary>
         /// <param name="code"></param>
-        /// <param name="line"></param>
-        public void ChangeReadWrite_PascalToAlg(string code, int line)
+        public string RefactoringCode(string code)
         {
-            if ((code.Contains("ВВОД"))||(code.Contains("ВЫВОД")) || (code.Contains("ВЫВОД_НС")) || (code.Contains("ВВОД_НС")))
+            code = code.Trim();
+
+            for (int i = 0; i != count; i++)
             {
-                code = code.Replace("(", " ");
-                code = code.Replace(")", "");
-                AlgCodeLines[line] = code;
+                    code = code.Insert(0, " ");
             }
-        }
 
-        /// <summary>
-        /// поменять синтаксис циклов
-        /// </summary>
-        /// <param name="code"></param>
-        /// <param name="line"></param>
-        public void ChangeCycle_PascalToAlg(string code, int line)
-        {
-            if ((code.Contains("НЦ ДЛЯ"))||(code.Contains("НЦ ПОКА")))
+            if (code.Contains("begin"))
             {
-                line++;
-
-                for (int i = line; i < AlgCodeLines.Count; i++)
-                {
-                    if (!AlgCodeLines[i].Contains("КОН;"))
-                    {
-                        line++;
-                    }
-                    else
-                    {
-                        AlgCodeLines[i] = "КЦ КОН;";                        
-                        break;
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// поменять синтаксис объявления переменных
-        /// </summary>
-        /// <param name="code"></param>
-        /// <param name="line"></param>
-        public void ChangeVarType_PascalToAlg(string code, int line)
-        {
-            if (code.Contains("ДЛИНЦЕЛ"))
-            {
-                int index = code.IndexOf(":");
-                AlgCodeLines[line] = VarType_PascalToAlg(index, code, "ДЛИНЦЕЛ");
+                count++;
             }
             else
-            if ((code.Contains("ЦЕЛ")) && (!code.Contains("ЦЕЛТАБ")))
             {
-                int index = code.IndexOf(":");                      
-                AlgCodeLines[line] = VarType_PascalToAlg(index, code, "ЦЕЛ");
+                if (code.Contains("end"))
+                {
+                    count--;
+                }
             }
-            else
-            if ((code.Contains("ВЕЩ")) && (!code.Contains("ВЕЩТАБ")))
-            {
-                int index = code.IndexOf(":");
-                AlgCodeLines[line] = VarType_PascalToAlg(index, code, "ВЕЩ");
-            }
-        }
-        public string VarType_PascalToAlg(int indexStart, string code, string type)
-        {
-            code = code.Remove(indexStart);
-            code = type + " " + code + ";";
-
             return code;
         }
 
-
-
-
-        /// <summary>
-        /// поменять синтаксис массивов
-        /// </summary>
-        /// <param name="code"></param>
-        /// <param name="line"></param>
-        public void ChangeArray_Alg(string code, int line)
-        {
-            if((code.Contains("int"))&&(code.Contains("[")))
-            {
-                int indexSkobka = code.IndexOf("[");
-                int indexDoubleDot = code.IndexOf(":");
-                code = code.Remove(indexSkobka, indexDoubleDot-indexSkobka);
-                code = code.Replace(":", "[");
-
-                SiPlusCodeLines[line] = code;              
-            }
-        }
-
-        /// <summary>
-        /// поменять синтаксис циклов
-        /// </summary>
-        /// <param name="code"></param>
-        /// <param name="line"></param>
-        public void ChangeCycle_Alg(string code, int line)
-        {
-            if(code.Contains("for"))
-            {
-                code = code.Replace("НЦ", "");
-                code = code.Replace("for", "");
-                code = "int" + code;
-                code = code.Replace("ОТ", "=");
-                code = code.Replace("ДО", "; i < ");
-                code = "for(" + code + ";i++)";
-
-                SiPlusCodeLines[line] = code;
-            }
-            if (code.Contains("while"))
-            {
-                code = code.Replace("НЦ", "");
-                code = code.Replace("while", "");
-                code = "while( " + code + " )";
-
-                SiPlusCodeLines[line] = code;
-            }
-            if(code.Contains("}."))
-            {
-                code = code.Replace(".", "");
-
-                SiPlusCodeLines[line] = code;
-            }
-        }
-
-        /// <summary>
-        /// поменять синтаксис условного оператора
-        /// </summary>
-        /// <param name="code"></param>
-        /// <param name="line"></param>
-        public void ChangeIF_Alg(string code, int line)
-        {
-            if(code.Contains("if"))
-            {
-                code = code.Replace("if", "");
-                code = "if( " + code + " )";
-
-                SiPlusCodeLines[line] = code;
-            }
-        }
 
 
         /// <summary>
@@ -382,49 +175,49 @@ namespace TranslatorTest1
         /// </summary>
         /// <param name="code"></param>
         /// <param name="line"></param>
-        public void ChangeKeys_PascalToAlg(string code, int line)
+        public void ChangeKeys_AlgToPascal(string code, int line)
         {
             NoKeys = true;
-            if (code.Contains("if"))
+            if (code.Contains("ЕСЛИ"))
             {
                 NoKeys = false;
                 try
                 {
                     code = code.Replace("ЕСЛИ", "if");
-                    AlgCodeLines[line] = code;
+                    AlgCodeLines[line] = RefactoringCode(code);
                 }
                 catch
                 {
-                    AlgCodeLines.Add(code);
+                    AlgCodeLines.Add(RefactoringCode(code));
                 }
             }
-            if (code.Contains("then"))
+            if (code.Contains("ТО"))
             {
                 NoKeys = false;
                 try
                 {
                     code = code.Replace("ТО", "then");
-                    AlgCodeLines[line] = code;
+                    AlgCodeLines[line] = RefactoringCode(code);
                 }
                 catch
                 {
-                    AlgCodeLines.Add(code);
+                    AlgCodeLines.Add(RefactoringCode(code));
                 }
             }
-            if (code.Contains("else"))
+            if (code.Contains("ИНАЧЕ"))
             {
                 NoKeys = false;
                 try
                 {
                     code = code.Replace("ИНАЧЕ", "else");
-                    AlgCodeLines[line] = code;
+                    AlgCodeLines[line] = RefactoringCode(code);
                 }
                 catch
                 {
-                    AlgCodeLines.Add(code);
+                    AlgCodeLines.Add(RefactoringCode(code));
                 }
             }
-            if (code.Contains("and"))
+            if (code.Contains("И"))
             {
                 NoKeys = false;
                 try
@@ -437,7 +230,7 @@ namespace TranslatorTest1
                     AlgCodeLines.Add(code);
                 }
             }
-            if (code.Contains("or")&& (!code.Contains("for")))
+            if (code.Contains("ИЛИ"))
             {
                 NoKeys = false;
                 try
@@ -450,20 +243,21 @@ namespace TranslatorTest1
                     AlgCodeLines.Add(code);
                 }
             }
-            if (code.Contains("not"))
+            if (code.Contains("НЕ"))
             {
                 NoKeys = false;
                 try
                 {
-                    code = code.Replace("НЕ", "not");
+                    code = code.Replace("НЕ", "not"); 
                     AlgCodeLines[line] = code;
                 }
                 catch
                 {
+                   
                     AlgCodeLines.Add(code);
                 }
             }
-            if (code.Contains("true"))
+            if (code.Contains("ДА"))
             {
                 NoKeys = false;
                 try
@@ -473,24 +267,11 @@ namespace TranslatorTest1
                 }
                 catch
                 {
-                    AlgCodeLines.Add(code);
-                }
-            }
-            if (code.Contains("false"))
-            {
-                NoKeys = false;
-                try
-                {
-                    code = code.Replace("ДА", "true");
-                    AlgCodeLines[line] = code;
-                }
-                catch
-                {
-                    AlgCodeLines.Add(code);
+                    AlgCodeLines.Add(RefactoringCode(code)); 
                 }
             }
 
-            if (code.Contains("for"))
+            if (code.Contains("НЦ ДЛЯ"))
             {
                 NoKeys = false;
                 try
@@ -499,184 +280,172 @@ namespace TranslatorTest1
                     code = code.Replace("НАЧ", "begin");
                     code = code.Replace(" ОТ ", ":=");
                     code = code.Replace("ДО", "to");
-                    code = code.Replace("", "do");
-                    AlgCodeLines[line] = code;
+                    code = code + " do";
+                    AlgCodeLines[line] = RefactoringCode(code);
                 }
                 catch
                 {
-                    AlgCodeLines.Add(code);
+                    AlgCodeLines.Add(RefactoringCode(code)); 
                 }
             }
-            if (code.Contains("while"))
+            if (code.Contains("НЦ ПОКА"))
             {
                 NoKeys = false;
                 try
                 {
                     code = code.Replace("НЦ ПОКА", "while");
                     code = code.Replace("НАЧ", "begin");
-                    code = code.Replace("do", "");
                     code = code.Replace("И", "and");
-                    code = code.Replace("ИЛИ  ", "or");                  
-                    AlgCodeLines[line] = code;
+                    code = code.Replace("ИЛИ", "or");
+                    code = code + " do";
+                    AlgCodeLines[line] = RefactoringCode(code);
                 }
                 catch
                 {
-                    AlgCodeLines.Add(code);
+                    AlgCodeLines.Add(RefactoringCode(code)); 
                 }
             }
 
-            if (code.Contains("] of integer"))
+            if (code.Contains("ЦЕЛТАБ"))
             {
                 NoKeys = false;
                 try
                 {
-                    code = code.Replace("", "of integer");
-                    code = code.Replace("", "array");
-                    code = code.Replace("", "array");
+                    code = code.Replace("ЦЕЛТАБ", "");
                     code = code.Replace(":", "..");
-                    code = "ЦЕЛТАБ " + code;
+                    code = code.Replace("[", ":array[");
+                    code = code.Replace("]", "] of integer");
 
-                    AlgCodeLines[line] = code;
+                    AlgCodeLines[line] = RefactoringCode(code);
                 }
                 catch
                 {
-                    AlgCodeLines.Add(code);
+                    AlgCodeLines.Add(RefactoringCode(code));
                 }
             }
             else
-            if (code.Contains("] of float"))
+            if (code.Contains("ВЕЩТАБ"))
             {
                 NoKeys = false;
                 try
                 {
-                    code = code.Replace("", "of float");
-                    code = code.Replace("", "array");
-                    code = code.Replace(" ", ":");
-                    code = code.Replace(" ", ":");
-                    code = "ВЕЩТАБ " + code;
+                    code = code.Replace("ВЕЩТАБ", "");
+                    code = code.Replace(":", "..");
+                    code = code.Replace("[", ":array[");
+                    code = code.Replace("]", "] of real");
 
-                    AlgCodeLines[line] = code;
+                    AlgCodeLines[line] = RefactoringCode(code);
                 }
                 catch
                 {
-                    AlgCodeLines.Add(code);
+                    AlgCodeLines.Add(RefactoringCode(code));
                 }
             }
             else
 
-            if (code.Contains("program"))
+            if (code.Contains("АЛГ"))
             {
                 NoKeys = false;
                 try
                 {
-                    code = code.Replace("program", "АЛГ");
-                    AlgCodeLines[line] = code;
+                    code = code.Replace("АЛГ", "program");
+                    AlgCodeLines[line] = RefactoringCode(code);
                 }
                 catch
                 {
-                    AlgCodeLines.Add(code);
+                    AlgCodeLines.Add(RefactoringCode(code));
                 }
             }
             else
             //типы переменных----------------------------
-            if (code.Contains("var"))
+            if (code.Contains("ПЕР"))
             {
                 NoKeys = false;
                 try
                 {
                     code = code.Replace("ПЕР", "var");
-                    AlgCodeLines[line] = code;
+                    AlgCodeLines[line] = RefactoringCode(code);
                 }
                 catch
                 {
-                    AlgCodeLines.Add(code);
+                    AlgCodeLines.Add(RefactoringCode(code));
                 }
             }
             else
-            if ((code.Contains("longint"))&& (!code.Contains("array")))
+            if (code.Contains("ЦЕЛ"))
             {
                 NoKeys = false;
                 try
                 {
-                    code = code.Replace("ДЛИНЦЕЛ", "longint");
-                    AlgCodeLines[line] = code;
+                    code = code.Replace("ЦЕЛ", "");
+                    code = code.Replace(";", ":integer;");
+                    AlgCodeLines[line] = RefactoringCode(code);
                 }
                 catch
                 {
-                    AlgCodeLines.Add(code);
+                    AlgCodeLines.Add(RefactoringCode(code));
                 }
             }
             else
-            if (code.Contains("integer")&&(!code.Contains("array")))
+            if (code.Contains("ВЕЩ"))
             {
                 NoKeys = false;
                 try
                 {
-                    code = code.Replace("ЦЕЛ", "integer");
-                    AlgCodeLines[line] = code;
+                    code = code.Replace("ВЕЩ", "");
+                    code = code.Replace(";", ":real;");
+                    AlgCodeLines[line] = RefactoringCode(code);
                 }
                 catch
                 {
-                    AlgCodeLines.Add(code);
+                    AlgCodeLines.Add(RefactoringCode(code));
                 }
             }
             else
-            if (code.Contains("float") && (!code.Contains("array")))
+            if (code.Contains("СТР"))
             {
                 NoKeys = false;
                 try
                 {
-                    code = code.Replace("ВЕЩ", "float");
-                    AlgCodeLines[line] = code;
+                    code = code.Replace("СТР", "");
+                    code = code.Replace(";", ":string;");
+                    AlgCodeLines[line] = RefactoringCode(code);
                 }
                 catch
                 {
-                    AlgCodeLines.Add(code);
-                }
-            }
-            else
-            if (code.Contains("string") && (!code.Contains("array")))
-            {
-                NoKeys = false;
-                try
-                {
-                    code = code.Replace("СТР", "string");
-                    AlgCodeLines[line] = code;
-                }
-                catch
-                {
-                    AlgCodeLines.Add(code);
+                    AlgCodeLines.Add(RefactoringCode(code));
                 }
             }
             else
             //----------------------------------
 
             //Начало/Конец-------------------------------------
-            if (code.Contains("begin"))
+            if (code.Contains("НАЧ"))
             {
                 NoKeys = false;
                 try
                 {
                     code = code.Replace("НАЧ", "begin");
-                    AlgCodeLines[line] = code;
+                    AlgCodeLines[line] = RefactoringCode(code);
                 }
                 catch
                 {
-                    AlgCodeLines.Add(code);
+                    AlgCodeLines.Add(RefactoringCode(code));
                 }
             }
             else
-            if (code.Contains("end"))
+            if (code.Contains("КОН"))
             {
                 NoKeys = false;
                 try
                 {
                     code = code.Replace("КОН", "end");
-                    AlgCodeLines[line] = code;
+                    code = code.Replace("КЦ", "");
+                    AlgCodeLines[line] = RefactoringCode(code);
                 }
                 catch
                 {
-                    AlgCodeLines.Add(code);
+                    AlgCodeLines.Add(RefactoringCode(code));
                 }
             }
             else
@@ -684,33 +453,35 @@ namespace TranslatorTest1
 
 
             //ввод/вывод 
-            if ((code.Contains("write")) || (code.Contains("writeln")))
+            if ((code.Contains("ВЫВОД")) || (code.Contains("ВЫВОД_НС")))
             {
                 NoKeys = false;
                 try
                 {
-                    code = code.Replace("ВЫВОД_НС", "writeln");
-                    code = code.Replace("ВЫВОД", "write");
-                    AlgCodeLines[line] = code;
+                    code = code.Replace("ВЫВОД_НС", "writeln(");
+                    code = code.Replace("ВЫВОД", "write(");
+                    code = code.Replace(";", ");");
+                    AlgCodeLines[line] = RefactoringCode(code);
                 }
                 catch
                 {
-                    AlgCodeLines.Add(code);
+                    AlgCodeLines.Add(RefactoringCode(code));
                 }
             }
             else
-            if ((code.Contains("read")) || (code.Contains("readln")))
+            if ((code.Contains("ВВОД")) || (code.Contains("ВВОД_НС")))
             {
                 NoKeys = false;
                 try
                 {
-                    code = code.Replace("ВВОД_НС", "readln");
-                    code = code.Replace("ВВОД", "read");
-                    AlgCodeLines[line] = code;
+                    code = code.Replace("ВВОД_НС", "readln(");
+                    code = code.Replace("ВВОД", "read(");
+                    code = code.Replace(";", ");");
+                    AlgCodeLines[line] = RefactoringCode(code);
                 }
                 catch
                 {
-                    AlgCodeLines.Add(code);
+                    AlgCodeLines.Add(RefactoringCode(code));
                 }
             }
             else
@@ -721,11 +492,11 @@ namespace TranslatorTest1
                 NoKeys = false;
                 try
                 {
-                    AlgCodeLines[line] = code;
+                    AlgCodeLines[line] = RefactoringCode(code);
                 }
                 catch
                 {
-                    AlgCodeLines.Add(code);
+                    AlgCodeLines.Add(RefactoringCode(code));
                 }
             }
             else
@@ -746,13 +517,13 @@ namespace TranslatorTest1
 
 
         /// <summary>
-        /// Загрузка кода Pascal из файла
+        /// Загрузка кода из файла
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void button_LoadFromFile_Click(object sender, EventArgs e)
         {
-            textBox_Pascal.Clear();
+            textBox_Alg.Clear();
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.InitialDirectory = Directory.GetCurrentDirectory();
@@ -769,7 +540,7 @@ namespace TranslatorTest1
                         string line;
                         while ((line = sr.ReadLine()) != null)
                         {
-                            textBox_Pascal.Text += line + "\r\n";
+                            textBox_Alg.Text += line + "\r\n";
 
                             label_LoadFileName.Text = "Файл: " + name;
                         }
@@ -779,7 +550,7 @@ namespace TranslatorTest1
         }
 
         /// <summary>
-        /// сохранение Алг.кода в файл
+        /// сохранение кода в файл
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -793,11 +564,11 @@ namespace TranslatorTest1
             sfd.RestoreDirectory = true;
 
             if (sfd.ShowDialog() == DialogResult.OK)
-                File.WriteAllText(sfd.FileName, textBox_Alg.Text);
+                File.WriteAllText(sfd.FileName + ".pas", textBox_Pascal.Text);
 
         }
 
-     
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -805,6 +576,16 @@ namespace TranslatorTest1
         }
 
         private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox_Alg_TextChanged(object sender, EventArgs e)
         {
 
         }
