@@ -12,7 +12,7 @@ namespace TranslatorTest1
 
         bool NoKeys = true;
         bool SyntError = false;
-        int count = 0;
+        int count;
 
         public Form1()
         {
@@ -22,15 +22,15 @@ namespace TranslatorTest1
 
         private void buttonTranslate_Click(object sender, EventArgs e)
         {
-            FromPascalToAlg(); //Перевести код с Pascal на Алгоритмический язык
+            FromAlgToPascal(); //Перевести код с алгоритмического языка в pascal
         }
 
         /// <summary>
         /// Перевести код с Pascal на алгоритмический язык
         /// </summary>
-        public void FromPascalToAlg()
+        public void FromAlgToPascal()
         {
-            count = 0;
+            count = -1;
             string copyCode = textBox_Alg.Text;
             textBox_Alg.Text = "";
             textBox_Alg.Text = copyCode;
@@ -63,10 +63,10 @@ namespace TranslatorTest1
             }
             if (NoKeys == false)
             {
-
+                CheckSyntMistakes();
                 if (SyntError == false) //если ошибок нет
                 {
-                    WriteAlgCodeToTextBox();
+                    WritePascalCodeToTextBox();
                 }
                 else
                 {
@@ -132,7 +132,7 @@ namespace TranslatorTest1
         /// <summary>
         /// Вывести на экран полученный алгоритмический код
         /// </summary>
-        public void WriteAlgCodeToTextBox()
+        public void WritePascalCodeToTextBox()
         {
             textBox_Pascal.Text = "";
             for (int i = 0; i < AlgCodeLines.Count; i++)
@@ -149,10 +149,14 @@ namespace TranslatorTest1
         {
             code = code.Trim();
 
-            for (int i = 0; i != count; i++)
+            if (count >=0)
             {
-                    code = code.Insert(0, " ");
+                for (int i = 0; i != count; i++)
+                {
+                    code = code.Insert(0, "    ");
+                }
             }
+            
 
             if (code.Contains("begin"))
             {
@@ -171,7 +175,7 @@ namespace TranslatorTest1
 
 
         /// <summary>
-        /// лексический анализ кода Pascal
+        /// лексический анализ алгоритмического кода
         /// </summary>
         /// <param name="code"></param>
         /// <param name="line"></param>
@@ -315,7 +319,7 @@ namespace TranslatorTest1
                     code = code.Replace(":", "..");
                     code = code.Replace("[", ":array[");
                     code = code.Replace("]", "] of integer");
-
+                    code = code.Insert(0, "  ");
                     AlgCodeLines[line] = RefactoringCode(code);
                 }
                 catch
@@ -333,7 +337,7 @@ namespace TranslatorTest1
                     code = code.Replace(":", "..");
                     code = code.Replace("[", ":array[");
                     code = code.Replace("]", "] of real");
-
+                    code = code.Insert(0, "  ");
                     AlgCodeLines[line] = RefactoringCode(code);
                 }
                 catch
@@ -379,6 +383,7 @@ namespace TranslatorTest1
                 {
                     code = code.Replace("ЦЕЛ", "");
                     code = code.Replace(";", ":integer;");
+                    code = code.Insert(0, "  ");
                     AlgCodeLines[line] = RefactoringCode(code);
                 }
                 catch
@@ -394,6 +399,7 @@ namespace TranslatorTest1
                 {
                     code = code.Replace("ВЕЩ", "");
                     code = code.Replace(";", ":real;");
+                    code = code.Insert(0, "  ");
                     AlgCodeLines[line] = RefactoringCode(code);
                 }
                 catch
@@ -409,6 +415,7 @@ namespace TranslatorTest1
                 {
                     code = code.Replace("СТР", "");
                     code = code.Replace(";", ":string;");
+                    code = code.Insert(0, "  ");
                     AlgCodeLines[line] = RefactoringCode(code);
                 }
                 catch
