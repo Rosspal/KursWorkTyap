@@ -383,7 +383,6 @@ namespace TranslatorTest1
                 {
                     code = code.Replace("ЦЕЛ", "");
                     code = code.Replace(";", ":integer;");
-                    code = code.Insert(0, "  ");
                     AlgCodeLines[line] = RefactoringCode(code);
                 }
                 catch
@@ -399,7 +398,6 @@ namespace TranslatorTest1
                 {
                     code = code.Replace("ВЕЩ", "");
                     code = code.Replace(";", ":real;");
-                    code = code.Insert(0, "  ");
                     AlgCodeLines[line] = RefactoringCode(code);
                 }
                 catch
@@ -415,7 +413,6 @@ namespace TranslatorTest1
                 {
                     code = code.Replace("СТР", "");
                     code = code.Replace(";", ":string;");
-                    code = code.Insert(0, "  ");
                     AlgCodeLines[line] = RefactoringCode(code);
                 }
                 catch
